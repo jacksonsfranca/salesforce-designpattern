@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy To Main
 on:
   push:
     paths:
@@ -45,5 +45,5 @@ jobs:
           sfdx sgd:source:delta --to "HEAD" --from "HEAD^" --output changed-sources/ --generate-delta --source force-app/ 
       - name: Deployment - run all tests
         run: >
-          sfdx force:source:deploy -p "changed-sources/force-app"  --testlevel
+          sf project deploy start
           RunLocalTests --json
